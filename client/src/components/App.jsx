@@ -1,19 +1,20 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import Register from '../pages/Register';
 import Login from '../pages/Login';
+import ProtectedRoute from '../routes/ProtectedRoute';
 import Profile from '../pages/Profile';
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-          <Route exact="true" path="register" element={<Register />} />
-          <Route exact="true" path="login" element={<Login />} />
-          <Route exact="true" path="profile" element={<Profile />} />
-          <Route path="*" element={<h1>404 Page Not Found</h1>} />
-      </Routes>
-    </BrowserRouter>
+    <Routes>
+      <Route exact="true" path="/register" element={<Register />} />
+      <Route exact="true" path="/login" element={<Login />} />
+      <Route element={<ProtectedRoute />}>
+        <Route exact="true" path="/profile" element={<Profile />} />
+      </Route>
+      <Route path="*" element={<h1>404 Page Not Found</h1>} />
+    </Routes>
   );
 }
 

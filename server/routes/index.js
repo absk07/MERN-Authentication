@@ -4,10 +4,10 @@ const router = express.Router();
 const { register, login, profile } = require('../controllers');
 const verifyUser = require('../middlewares/verifyJWT');
 
-router.post('/register', register);
+router.post('/api/register', register);
 
-router.post('/login', login);
+router.post('/api/login', login);
 
-router.get('/profile', verifyUser, profile);
+router.get('/api/profile', verifyUser, profile);
 
 module.exports = router;
